@@ -5,36 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Let's Play</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="game.css">
+    <title>Start the Quiz</title>
+    <link rel="stylesheet" href="game2.css">
 </head>
 
 <body>
     <div class="container">
-        <div id="game" class="justify-center flex-column">
-            <h2 id="title">What is the answer to this question?</h2>
-            <div class="choice-container">
-                <p class="choice-prefix">A</p>
-                <p class="choice-text">Choice 1</p>
-            </div>
-            <div class="choice-container">
-                <p class="choice-prefix">B</p>
-                <p class="choice-text">Choice 2</p>
-            </div>
-            <div class="choice-container">
-                <p class="choice-prefix">C</p>
-                <p class="choice-text">Choice 3</p>
-            </div>
-            <div class="choice-container">
-                <p class="choice-prefix">D</p>
-                <p class="choice-text">Choice 4</p>
-            </div> 
-
-
+        <div id="question-container" class="hide"></div>
+        <div id="question">Question</div>
+        <div class="answer-buttons" class="btn-grid">
+            <button class="btn"> Answer 1</button>
+            <button class="btn"> Answer 2</button>
+            <button class="btn"> Answer 3</button>
+            <button class="btn"> Answer 4</button>
+        </div>
+        <div class="controls">
+            <button id="start-button" class="start-btn btn">Start</button>
+            <button id="next-button" class="next-btn btn hide">Next</button>
         </div>
     </div>
-    <script src = "script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

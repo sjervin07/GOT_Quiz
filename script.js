@@ -1,77 +1,69 @@
-var title = document.getElementById("title");
-var game = document.getElementById("game")
+var startButton = document.getElementById("start-button")
+var questionContainer = document.getElementById("question-container")
 
+var questionElement = document.getElementById("question")
+var answerButtons = document.getElementById("answer-buttons")
 
-let currentTitle = {};
-let acceptingAnswers = true;
-let score = 0;
-let titleCounter = 0;
-let availableQuestions = [];
+var shuffleQuestions
+var currentQuestionsIndex
 
+startButton.addEventListener("click", startGame)
 
+function startGame() {
+    startButton.classList.add("hide")
+    shuffleQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionsIndex = 0
+    questionContainer.classList.remove("hide")
+    setNextQuestion()
 
+}
+
+function setNextQuestion() {
+    showQuestion(shuffleQuestions[currentQuestionsIndex])
+
+}
+
+function showQuestion(question) {
+    questionElement.innerText = question.question
+    question.choices.forEach(choices => {
+        button = document.createElement("button")
+        button.innerText = choices.innerText
+        button.classlist.add("btn")
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener("click", selectAnswer);answerButtons.appendChild(button) 
+    })
+
+}
+
+function selectAnswer() {
+
+}
 var questions = [
     {    
-    title: "What Great House are Robb, Sansa, Arya, Bran and Rickon from?",
+    question: "What Great House are Robb, Sansa, Arya, Bran and Rickon from?",
     choices: ["Greyjoy", "Stark", "Baratheon", "Lannister"],
     answer: "Stark"
     },
     {
-    title: "What is the capital of the Seven Kingdoms?",
+    question: "What is the capital of the Seven Kingdoms?",
     choices: ["Dragonstone", "Winterfell", "Dorne", "King's Landing"],
     answer: "King's Landing"
     },
     {
-    title: "Which of the following options is NOT one of Daenerys Targaryen's dragons?",
+    question: "Which of the following options is NOT one of Daenerys Targaryen's dragons?",
     choices: ["Viserion", "Rhaegal", "Puff", "Drogon"],
     answer: "Puff"
     },
     {
-    title: "The Dothraki are skilled warriors famous for using what animal in battle?",
+    question: "The Dothraki are skilled warriors famous for using what animal in battle?",
     choices: ["Elephants", "Ostriches", "Horses", "Camels"],
     answer: "Horses"
     },
     {
-    title: "Who winds up on the throne at the end of the series?",
+    question: "Who winds up on the throne at the end of the series?",
     choices: ["Bran Stark", "Daenerys Targaryen", "Jon Snow", "Jamie Lannister"],
     answer: "Bran Stark"
     }
     ];
-function startGame() {
-    renderQuestion()
-
-}
-startGame()
-
-function renderQuestion() {
-    for (var i=0; i < questions.length; i++){
-        
-        var h2= document.createElement("h2")
-        h2.innerText = questions[i].title;
-        game.append(h2)
-
-    for (var j=0; j < questions[i].choices.length; j++){
-
-        var choiceContainer= document.createElement("div");
-        choiceContainer.classList.add("choice-container");
-
-        var p= document.createElement("p");
-        p.classList.add("choice-prefix");
-        p.innerText=j;
-
-        var text= document.createElement("p");
-        text.classList.add("choice-text");
-        text.innerText= questions[i].choices[j];
-
-        choiceContainer.append(p)
-        choiceContainer.append(text)
-        game.append(choiceContainer);
-    }
-    }
-}
-
-
-
-
-
-
